@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
@@ -14,8 +15,6 @@ namespace Send_Messages
 {
     public static class Auth
     {
-        private static bool IsAuth { get; set; } = false;
-
         public async static void Login(User user)
         {
             if (!String.IsNullOrEmpty(user.Email) && !String.IsNullOrEmpty(user.Password))
@@ -34,30 +33,57 @@ namespace Send_Messages
                         using (HttpContent content = response.Content)
                         {
                             string mycontent = await content.ReadAsStringAsync();
-                           
+
                             var result = JsonConvert.DeserializeObject<UserInfo>(mycontent);
 
-                            if(result.Success)
+                            if (result.Success)
                             {
-                                HttpCookie token = new HttpCookie("Token");
-                                token.Value = result.Data.Token;
-                                token.Expires = DateTime.Now.AddDays(365);
-
-                                
-
-                                MessageBox.Show(token.Value);
-                                IsAuth = true;
+                                CreateCockie(result.Data.Token);
+                                var sendForm = new SendForm();
+                                var form = new LoginForm();
+                                form.Hide();
+                                sendForm.Show();
                             }
+                            else
+                                MessageBox.Show(Messages.WrongUser);
                         }
                     }
                 }
             }
-            else MessageBox.Show(Messages.WrongEmail);
+            else MessageBox.Show(Messages.EmptyField);
 
         }
         public static bool IsLogin()
         {
-            return IsAuth;
+            if (File.Exists("Token.txt"))
+                return true;
+            else
+                return false;
+        }
+
+        public static void CreateCockie(string token)
+        {
+            using (StreamWriter stream = new StreamWriter("Token.txt")) stream.WriteLine(token);
+        }
+
+        public static string GetToken()
+        {
+            string token = null;
+
+            if (File.Exists("Token.txt"))
+                using (StreamReader stream = new StreamReader("Token.txt")) token = stream.ReadLine();
+
+            return token;
+        }
+
+        public static bool LogOut()
+        {
+            bool status = false;
+            if (File.Exists("Token.txt"))
+                File.Delete("Token.txt");
+            if (!File.Exists("Token.txt"))
+                status =  true;
+            return status;
         }
 
 

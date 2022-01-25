@@ -32,33 +32,36 @@ namespace Send_Messages
             this.TextGroupBox = new System.Windows.Forms.GroupBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.SendingMethodGroupBox = new System.Windows.Forms.GroupBox();
-            this.SendNowRadio = new System.Windows.Forms.RadioButton();
-            this.SendLaterRadio = new System.Windows.Forms.RadioButton();
             this.SendLaterDate = new System.Windows.Forms.DateTimePicker();
+            this.SendLaterRadio = new System.Windows.Forms.RadioButton();
+            this.SendNowRadio = new System.Windows.Forms.RadioButton();
             this.ActionGroupBox = new System.Windows.Forms.GroupBox();
-            this.SendBtn = new System.Windows.Forms.Button();
             this.CancelBtn = new System.Windows.Forms.Button();
+            this.SendBtn = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.TextGroupBox.SuspendLayout();
             this.SendingMethodGroupBox.SuspendLayout();
             this.ActionGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // TextGroupBox
             // 
             this.TextGroupBox.Controls.Add(this.textBox1);
-            this.TextGroupBox.Location = new System.Drawing.Point(13, 13);
+            this.TextGroupBox.Location = new System.Drawing.Point(13, 64);
             this.TextGroupBox.Name = "TextGroupBox";
-            this.TextGroupBox.Size = new System.Drawing.Size(535, 261);
+            this.TextGroupBox.Size = new System.Drawing.Size(535, 210);
             this.TextGroupBox.TabIndex = 0;
             this.TextGroupBox.TabStop = false;
             this.TextGroupBox.Text = "Text:";
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(7, 20);
+            this.textBox1.Location = new System.Drawing.Point(7, 19);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(522, 235);
+            this.textBox1.Size = new System.Drawing.Size(522, 236);
             this.textBox1.TabIndex = 0;
             // 
             // SendingMethodGroupBox
@@ -73,18 +76,13 @@ namespace Send_Messages
             this.SendingMethodGroupBox.TabStop = false;
             this.SendingMethodGroupBox.Text = "Sending Method";
             // 
-            // SendNowRadio
+            // SendLaterDate
             // 
-            this.SendNowRadio.AutoSize = true;
-            this.SendNowRadio.Checked = true;
-            this.SendNowRadio.Location = new System.Drawing.Point(7, 20);
-            this.SendNowRadio.Name = "SendNowRadio";
-            this.SendNowRadio.Size = new System.Drawing.Size(75, 17);
-            this.SendNowRadio.TabIndex = 0;
-            this.SendNowRadio.TabStop = true;
-            this.SendNowRadio.Text = "Send Now";
-            this.SendNowRadio.UseVisualStyleBackColor = true;
-            this.SendNowRadio.CheckedChanged += new System.EventHandler(this.SendNowRadio_CheckedChanged);
+            this.SendLaterDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.SendLaterDate.Location = new System.Drawing.Point(6, 67);
+            this.SendLaterDate.Name = "SendLaterDate";
+            this.SendLaterDate.Size = new System.Drawing.Size(146, 20);
+            this.SendLaterDate.TabIndex = 2;
             // 
             // SendLaterRadio
             // 
@@ -98,13 +96,18 @@ namespace Send_Messages
             this.SendLaterRadio.UseVisualStyleBackColor = true;
             this.SendLaterRadio.CheckedChanged += new System.EventHandler(this.SendLaterRadio_CheckedChanged);
             // 
-            // SendLaterDate
+            // SendNowRadio
             // 
-            this.SendLaterDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.SendLaterDate.Location = new System.Drawing.Point(6, 67);
-            this.SendLaterDate.Name = "SendLaterDate";
-            this.SendLaterDate.Size = new System.Drawing.Size(146, 20);
-            this.SendLaterDate.TabIndex = 2;
+            this.SendNowRadio.AutoSize = true;
+            this.SendNowRadio.Checked = true;
+            this.SendNowRadio.Location = new System.Drawing.Point(7, 20);
+            this.SendNowRadio.Name = "SendNowRadio";
+            this.SendNowRadio.Size = new System.Drawing.Size(75, 17);
+            this.SendNowRadio.TabIndex = 0;
+            this.SendNowRadio.TabStop = true;
+            this.SendNowRadio.Text = "Send Now";
+            this.SendNowRadio.UseVisualStyleBackColor = true;
+            this.SendNowRadio.CheckedChanged += new System.EventHandler(this.SendNowRadio_CheckedChanged);
             // 
             // ActionGroupBox
             // 
@@ -117,15 +120,6 @@ namespace Send_Messages
             this.ActionGroupBox.TabStop = false;
             this.ActionGroupBox.Text = "Action";
             // 
-            // SendBtn
-            // 
-            this.SendBtn.Location = new System.Drawing.Point(77, 44);
-            this.SendBtn.Name = "SendBtn";
-            this.SendBtn.Size = new System.Drawing.Size(75, 23);
-            this.SendBtn.TabIndex = 0;
-            this.SendBtn.Text = "Send";
-            this.SendBtn.UseVisualStyleBackColor = true;
-            // 
             // CancelBtn
             // 
             this.CancelBtn.Location = new System.Drawing.Point(348, 44);
@@ -136,11 +130,43 @@ namespace Send_Messages
             this.CancelBtn.UseVisualStyleBackColor = true;
             this.CancelBtn.Click += new System.EventHandler(this.CancelBtn_Click);
             // 
+            // SendBtn
+            // 
+            this.SendBtn.Location = new System.Drawing.Point(77, 44);
+            this.SendBtn.Name = "SendBtn";
+            this.SendBtn.Size = new System.Drawing.Size(75, 23);
+            this.SendBtn.TabIndex = 0;
+            this.SendBtn.Text = "Send";
+            this.SendBtn.UseVisualStyleBackColor = true;
+            this.SendBtn.Click += new System.EventHandler(this.SendBtn_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Send_Messages.Properties.Resources.logo;
+            this.pictureBox1.Location = new System.Drawing.Point(13, 13);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(100, 50);
+            this.pictureBox1.TabIndex = 3;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(466, 13);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 4;
+            this.button1.Text = "Log Out";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // SendForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(560, 513);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.ActionGroupBox);
             this.Controls.Add(this.SendingMethodGroupBox);
             this.Controls.Add(this.TextGroupBox);
@@ -151,6 +177,7 @@ namespace Send_Messages
             this.SendingMethodGroupBox.ResumeLayout(false);
             this.SendingMethodGroupBox.PerformLayout();
             this.ActionGroupBox.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -166,5 +193,7 @@ namespace Send_Messages
         private System.Windows.Forms.GroupBox ActionGroupBox;
         private System.Windows.Forms.Button CancelBtn;
         private System.Windows.Forms.Button SendBtn;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button button1;
     }
 }

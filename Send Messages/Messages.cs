@@ -8,6 +8,7 @@ namespace Send_Messages
 {
     public class Messages
     {
-        public const string WrongEmail = "არასწორი ელფოსტა"; 
+        public const string EmptyField = "გთხოვთ შეავსოთ ყველა ველი!"; 
+        public const string WrongUser = "მომხმარებლის ელ ფოსტა ან პაროლი არასწორია!"; 
     }
 }
